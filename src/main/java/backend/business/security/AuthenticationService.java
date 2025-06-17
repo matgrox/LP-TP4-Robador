@@ -10,10 +10,7 @@ import backend.model.user.Usuario;
  * @author matias
  */
 public class AuthenticationService implements IAuthService{
-    private RepositoryUser crud;
-
-    public AuthenticationService(RepositoryUser crud) {
-        this.crud = crud;
+    public AuthenticationService() {
     }
     
     /**
@@ -26,7 +23,8 @@ public class AuthenticationService implements IAuthService{
     public long signin(String username, String password) {
         long iduser = -1;
             // Verifica si los datos del usuario coinciden con los valores introducidos
-            Usuario u = crud.read(username, password);
+            RepositoryUser rs = new RepositoryUser();
+            Usuario u = rs.read(username, password);
             if (u!=null) {
                 System.out.println("Auntenticacion exitosa Bienvenid@"+u.getUsername());
         }else{
