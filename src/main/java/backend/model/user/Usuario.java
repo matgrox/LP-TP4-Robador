@@ -1,14 +1,28 @@
 package backend.model.user;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 /**
  * Clase que representa a un usuario en el sistema.
  * Contiene los atributos y métodos necesarios para la autenticación.
  * @author matias
  */
+@Entity
+@Table(name="usuario")
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long codUser;       // ID único del usuario
+    @Column(name="username")
     private String username;    // Nombre de usuario
+    @Column(name="email")
     private String email;       // email de usuario
+    @Column(name="password")
     private String password;    // Contraseña del usuario
     /**
      * Constructor vacío necesario para el mapeo de datos (Jackson lo requiere).
